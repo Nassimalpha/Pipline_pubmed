@@ -1,0 +1,26 @@
+1. Question : Quels sont les éléments à considérer pour faire évoluer votre code afin qu’il puisse gérer de grosses 
+volumétries de données (fichiers de plusieurs To ou millions de fichiers par exemple) ? 
+Pourriez-vous décrire les modifications qu’il faudrait apporter, s’il y en a, pour prendre en considération de 
+telles volumétries ? 
+
+
+1. Ma Reponse : 
+ça nécéssitera une évolution de l'architecture,
+    
+    1.1 Lecture de données :  
+    lecture csv et json sera pas optimal, très lente, et  RAM sera vite saturé
+    donc : soit une lecture par chunk , ou utiliser plutot le format parquet par exemple
+
+    1.2 stockage : 
+    SQL en locale ou sous un cloud (bigquery, SQL Server, PostgresSQL, ...)
+
+    1.3. Recherche et indexation:
+    créer des index
+
+    1.4 Traitement parrallelisé : 
+    Apache Spark pour le traitment distribué
+
+    1.5 Utilisation d'un ETL pour le traitment en batch
+
+
+
