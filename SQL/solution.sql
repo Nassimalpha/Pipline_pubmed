@@ -1,4 +1,4 @@
---------- Premiere partie du test 
+--------- First part of the test / Premiere partie du test 
 
 Select p.date as vente, SUM(t.prod_price * t.prod_qty) as vente
 from transactrion t
@@ -7,7 +7,7 @@ group by t.date
 order by t.date;
 
 
---------- Seconde partie du test 
+--------- second part of the test / seconde partie du test 
 
 select client_id,
 SUM(CASE WHEN pm.product_type = 'MEUBLE' then t.prod_price * t.prod_qty else 0) as ventes_meuble

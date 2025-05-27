@@ -3,12 +3,12 @@ import os
 
 def mentions_to_json(drug_mentions: dict, output_path: str = "Pipeline/output/graph.json"):
 
-    # creer le dossier output si il n'existe pas    
+    # create the folder if it doesnt exist    
     os.makedirs(os.path.dirname(output_path), exist_ok=True)
 
-    # fichier en ecriture avec l'encoding pour les caracteres spécieaux 
+    # file with writing rights
     with open(output_path, "w", encoding="utf-8") as f:
-        # le contenu du dictionnaire dans le fichier JSON 
+        # set the content of the json with the dictionnary
         json.dump(drug_mentions, f, indent=2, ensure_ascii=False)
 
     

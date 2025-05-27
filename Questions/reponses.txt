@@ -15,7 +15,7 @@ telles volumétries ?
     SQL en locale ou sous un cloud (bigquery, SQL Server, PostgresSQL, ...)
 
     1.3. Recherche et indexation:
-    créer des index
+    créer des index ( indexastion )
 
     1.4 Traitement parrallelisé : 
     Apache Spark pour le traitment distribué

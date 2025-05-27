@@ -10,16 +10,16 @@ from mentions import check_mentions_and_create_dict
 from writer import mentions_to_json
 
 
-# Chargement et Nettoyage : 
+# loading and preprocessing: 
 drugs = process_drugs(load_drugs())
 clinilical_trials = process_clinical_trials_dataframe(load_clinical_trials())
 pubmed = process_pubmed_dataframe(load_pubmed(), load_pubmed_json())
 
-# Fusionner les sources : 
+# concat ( or merge) sources : 
 publications = pd.concat([clinilical_trials, pubmed], ignore_index=True)
 
-# graphe de drugs :
+#  drugs graph  :
 mentions_dict = check_mentions_and_create_dict(drugs, publications)
 
-# exporter en json:
+# export in json:
 mentions_to_json(mentions_dict, "Pipeline/output/graph.json")

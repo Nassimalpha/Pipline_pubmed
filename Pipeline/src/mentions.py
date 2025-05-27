@@ -14,10 +14,10 @@ def check_mentions_and_create_dict(drugs:pd.DataFrame, publications:pd.DataFrame
     for drug in drug_names:
         mention = []
 
-        # recherche des publications ou le titre contient le nom du médicament
-        # le regex=True indique qu’on utilise une expression régulière
-        # le na=False évite une erreur quand la colonne contient des nulles
-        # le /b indique qu'on cherche le mot exact et limité a ce mot la 
+        # search for publications or titles that contains the drug name 
+        # regex=True for regular expressions
+        # na=False to avoid the error in NaN cases
+        # le /b indique to get the exct word inside
         # le rf au debut du contains pour inserer une varibale ( le f ) et conserver les '/' dans la regex
         matched = publications[publications['title'].str.contains(rf"\b{drug}\b",  na=False, regex=True)]
 

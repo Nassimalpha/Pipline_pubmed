@@ -14,13 +14,13 @@ def process_clinical_trials_dataframe(df: pd.DataFrame) -> pd.DataFrame:
     # rename column : 
     df = df.rename(columns={"scientific_title": "title"})
 
-    # Fussionner les rows ayant la meme valeur "title" and "date" mais NAN ailleurs
+    # merge the rows that has the value "title" or "date" with those with NAN 
     original_columns = df.columns  # Sauvegarder l'ordre original
     grouped = df.groupby(["title"], dropna=False)
     df = grouped.agg(lambda x: x.dropna().iloc[0] if x.dropna().any() else np.nan).reset_index()
     df = df.reset_index()[original_columns]
 
-    # colonne source pour garder une trace de la provenance de la donnée 
+    #  source to know whiche source it came from 
     df['source'] = "clinical_trials"
     
     return df
@@ -30,7 +30,7 @@ def process_clinical_trials_dataframe(df: pd.DataFrame) -> pd.DataFrame:
 def process_pubmed_dataframe(pubcsv: pd.DataFrame, pubjson: pd.DataFrame) -> pd.DataFrame:
     df = pd.concat([pubcsv, pubjson], ignore_index=True)
     
-    # colonne source pour garder une trace de la provenance de la donnée 
+    #  column source to know which source it came from
     df['source'] = "pubmed"
 
     return df
@@ -44,17 +44,17 @@ def process_drugs(drug: pd.DataFrame) -> pd.DataFrame:
 # ########### Global cleaning
 def clean(df: pd.DataFrame)-> pd.DataFrame:
     
-    # gerer les espaces vides et les remplacer pas NaN
+    # manage spaces and replace them with NaN values
     for column in df.columns:
         df[column] = df[column].replace(r'^\s*$', np.nan, regex=True)
 
-    # Supprimer les "title" null
+    # delete NaN titles
     df = delete_missing_data_on_column(df, "title")
 
-    # formatage de date
+    # date processing
     df['date'] = df['date'].apply(parse_date_mixed)
     
-    # formater et uniformiser les titres et journeaux (minuscules, sans accents éventuels)
+    # standarization (lower, accents, spaces, commas, ...)
     df['title'] = df['title'].apply(Standarization)
     df['journal'] = df['journal'].apply(Standarization)
 

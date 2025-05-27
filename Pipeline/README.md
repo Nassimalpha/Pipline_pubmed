@@ -71,7 +71,7 @@ project_root/
 - Duplicate entries (`title + journal + date`) are removed
 - Missing data is flagged or kept based on configuration
 
-## 📦Output Format
+## Output Format
 
 A JSON file representing the graph:
 
