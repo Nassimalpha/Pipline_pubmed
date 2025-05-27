@@ -1,5 +1,5 @@
-Python 3.13
 Pandas
 Numpy
 datetime
 json
+unidecode
