@@ -1,5 +1,4 @@
 Pandas
 Numpy
 datetime
-json
 unidecode
