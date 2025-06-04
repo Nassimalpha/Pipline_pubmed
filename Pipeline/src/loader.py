@@ -1,16 +1,26 @@
 import pandas as pd
 import json
+import os
+
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))  # <- on remonte à project_root
+DATA_DIR = os.path.join(BASE_DIR, 'data')
 
 def load_clinical_trials():
-    return pd.read_csv("Pipeline/data/clinical_trials.csv")
+    path = os.path.join(DATA_DIR, 'clinical_trials.csv')
+    return pd.read_csv(path)
+
 
 def load_drugs():
-    return pd.read_csv("Pipeline/data/drugs.csv")
+    path = os.path.join(DATA_DIR, 'drugs.csv')
+    return pd.read_csv(path)
 
 def load_pubmed():
-    return pd.read_csv("Pipeline/data/pubmed.csv")
+    path = os.path.join(DATA_DIR, 'pubmed.csv')
+    return pd.read_csv(path)
 
 def load_pubmed_json():
-        with open("Pipeline/data/pubmed.json", 'r', encoding='utf-8') as f:
-            data = json.load(f)
-            return pd.json_normalize(data)  
+    path = os.path.join(DATA_DIR, 'pubmed.json')
+        
+    with open(path, 'r', encoding='utf-8') as f:
+        data = json.load(f)
+        return pd.json_normalize(data)  

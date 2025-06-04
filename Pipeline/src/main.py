@@ -22,4 +22,4 @@ publications = pd.concat([clinilical_trials, pubmed], ignore_index=True)
 mentions_dict = check_mentions_and_create_dict(drugs, publications)
 
 # export in json:
-mentions_to_json(mentions_dict, "Pipeline/output/graph.json")
+mentions_to_json(mentions_dict, "output/graph.json")
