@@ -12,6 +12,15 @@ Each connection is annotated with:
 
 > Identify drug mentions through the titles of publications and trials, and generate a structured JSON graph representing the relationships between drugs, journals, and dates.
 
+
+## Project Directory
+
+Make sure to navigate into the `Pipeline` directory before running any commands:
+
+```bash
+cd Pipeline
+```
+because outside of `Pipeline` we find the find the folders `Questions` and `SQL` that mainly for the other theorical parts of the project   
 ## Project Structure
 
 ```
@@ -44,20 +53,39 @@ project_root/
 
 ##  How to Run
 
-1. Install dependencies:
+
+
+1. Create the virtual environment:
+   ```bash
+   python -m venv venv
+   ```
+
+2. Activate the environment:
+  ```bash
+  .\venv\Scripts\activate
+   ```
+> You’ll know the environment is activated when you see `(venv)` in your terminal prompt.
+
+
+3. Install dependencies:
    ```bash
    pip install -r requirements.txt
    ```
 
-2. Run the main pipeline script:
+4. Run the main pipeline script:
    ```bash
    python src/main.py
    ```
 
-3. The output is saved as:
+5. The output is saved as:
    ```
    output/graph.json
    ```
+
+6. Deactivate when you're done working:
+```bash
+deactivate
+```
 
 ## Input Data
 
